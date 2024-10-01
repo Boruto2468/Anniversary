@@ -1,7 +1,8 @@
 function changeMessage() {
     const surpriseMessage = document.getElementById('surprise-message');
     surpriseMessage.classList.toggle('hidden');
-    
+    const music = document.getElementById('background-music');
+    music.play();
     // Trigger flashy fireworks
     createFireworks();
   }
