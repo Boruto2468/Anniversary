@@ -1,120 +1,128 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-image: "";
-    background-color: #ffe5ec;
-    margin: 0;
-    height: 100vh;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  height: 100vh;
+}
+
+.fireworks-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;  /* Ensure the background image covers the entire container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat;
+  animation: slideshow 15s infinite; /* Add a 15s slideshow animation that repeats infinitely */
+}
+
+.card {
+  background-color: transparent;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+  animation: fadeIn 1s ease-in-out;
+  z-index: 10;
+}
+
+h1 {
+  color: #ff66b3;
+}
+
+button {
+  background-color: #ff66b3;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+button:hover {
+  background-color: #ff3385;
+}
+
+.hidden {
+  display: none;
+}
+
+#surprise-message {
+  color: #ff3385;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  animation: rainbow 2s infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes rainbow {
+  0% { color: red; }
+  16% { color: orange; }
+  33% { color: yellow; }
+  50% { color: green; }
+  66% { color: blue; }
+  83% { color: indigo; }
+  100% { color: violet; }
+}
+
+@keyframes fireworks-flash {
+  0% {
+    transform: scale(0);
+    opacity: 1;
   }
-  
-  .fireworks-background {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;  /* Ensure it covers the full height of the viewport */
-    background-color: #ffe5ec;
-    overflow: hidden;
-    position: relative;  /* To position fireworks correctly */
+  50% {
+    transform: scale(1.5);
+    opacity: 0.6;
   }
-  
-  .card {
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    width: 300px;
-    animation: fadeIn 1s ease-in-out;
-  }
-  
-  h1 {
-    color: #ff66b3;
-  }
-  
-  button {
-    background-color: #ff66b3;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
-  }
-  
-  button:hover {
-    background-color: #ff3385;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  #surprise-message {
-    color: #ff3385;
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 20px;
-    animation: rainbow 2s infinite;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  @keyframes rainbow {
-    0% { color: red; }
-    16% { color: orange; }
-    33% { color: yellow; }
-    50% { color: green; }
-    66% { color: blue; }
-    83% { color: indigo; }
-    100% { color: violet; }
-  }
-  
-  @keyframes fireworks-flash {
-    0% {
-      transform: scale(0);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.5);
-      opacity: 0.6;
-    }
-    100% {
-      transform: scale(2);
-      opacity: 0;
-    }
-  }
-  
-  .firework {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: #ff66b3;
+  100% {
+    transform: scale(2);
     opacity: 0;
-    animation: fireworks-flash 1s ease-out forwards infinite;
   }
-  
-  .firework::before, .firework::after {
-    content: "";
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background-color: #ff66b3;
-    border-radius: 50%;
-    opacity: 0;
-    animation: fireworks-flash 1s ease-out forwards infinite;
-  }
-  
-  .firework::before {
-    transform: rotate(45deg);
-    background-color: #ffcc00;
-  }
-  
-  .firework::after {
-    transform: rotate(-45deg);
-    background-color: #ff3300;
-  }
-  
+}
+
+.firework {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ff66b3;
+  opacity: 0;
+  animation: fireworks-flash 1s ease-out forwards infinite;
+  z-index: 5;
+}
+
+.firework::before, .firework::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #ff66b3;
+  border-radius: 50%;
+  opacity: 0;
+  animation: fireworks-flash 1s ease-out forwards infinite;
+}
+
+.firework::before {
+  transform: rotate(45deg);
+  background-color: #ffcc00;
+}
+
+.firework::after {
+  transform: rotate(-45deg);
+  background-color: #ff3300;
+}
+
+/* Slideshow animation */
+@keyframes slideshow {
+  0% { background-image: url('IMG-1.jpg'); }
+  33% { background-image: url('IMG-2.jpg'); }
+  66% { background-image: url('IMG-3.jpg'); }
+  100% { background-image: url('IMG-4.jpg'); }
+}

@@ -26,7 +26,7 @@ function changeMessage() {
       // Remove firework after animation ends
       setTimeout(() => {
         firework.remove();
-      }, 1500);
+      }, 60000);
     }
   }
   
